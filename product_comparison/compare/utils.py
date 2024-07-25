@@ -4,7 +4,7 @@ import asyncio
 from bs4 import BeautifulSoup
 from googletrans import Translator
 
-SCRAPER_API_KEY = '417b9930cfc419821d215c7937ee1ec4'
+SCRAPER_API_KEY = 'Put your scraper api key'
 
 async def fetch(session, url):
     async with session.get(f'http://api.scraperapi.com?api_key={SCRAPER_API_KEY}&url={url}') as response:
