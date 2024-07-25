@@ -54,9 +54,6 @@ This Chrome extension, "Product Search Extension SiteWise," allows users to sear
 
 - This project is licensed under the [MIT License](LICENSE).
 
-### Authors
-
-- Add names or contributors of the project.
 
 ### Support
 
