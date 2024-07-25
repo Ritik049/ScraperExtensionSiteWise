@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Comparison</title>
+    {%load static%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="{% static 'css/main.css' %}"> -->
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Product Comparison</h1>
+    </header>
+
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <form method="GET" action="{% url 'index' %}" class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search for products..." value="{{ request.GET.q }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Amazon Column -->
+            <div class="col-md-4">
+                <h2 class="text-center">Amazon</h2>
+                <img src="{% static 'images/amazon_logo.jpg' %}" alt="Amazon Logo" class="img-fluid mb-3 d-block mx-auto">
+                <div class="card-container">
+                    {% if amazon_data %}
+                        {% for product in amazon_data %}
+                            <div class="card mb-3">
+                                <img src="{{ product.image_url }}" class="card-img-top" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.title }}</h5>
+                                    <p class="card-text">Price: {{ product.price }}</p>
+                                    <p class="card-text">Rating: {{ product.rating }}</p>
+                                    <p class="card-text">Reviews: {{ product.reviews }}</p>
+                                    <a href="{{ product.link }}" class="btn btn-primary" target="_blank">View on Amazon</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No results found.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Flipkart Column -->
+            <div class="col-md-4">
+                <h2 class="text-center">Flipkart</h2>
+                <img src="{% static 'images/flipkart_logo.jpg' %}" alt="Flipkart Logo" class="img-fluid mb-3 d-block mx-auto">
+                <div class="card-container">
+                    {% if flipkart_data %}
+                        {% for product in flipkart_data %}
+                            <div class="card mb-3">
+                                <img src="{{ product.image_url }}" class="card-img-top" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.title }}</h5>
+                                    <p class="card-text">Price: {{ product.price }}</p>
+                                    <p class="card-text">Rating: {{ product.rating }}</p>
+                                    <p class="card-text">Reviews: {{ product.reviews }}</p>
+                                    <a href="{{ product.link }}" class="btn btn-primary" target="_blank">View on Flipkart</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No results found.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- eBay Column -->
+            <div class="col-md-4">
+                <h2 class="text-center">eBay</h2>
+                <img src="{% static 'images/ebay_logo.png' %}" alt="eBay Logo" class="img-fluid mb-3 d-block mx-auto">
+                <div class="card-container">
+                    {% if ebay_data %}
+                        {% for product in ebay_data %}
+                            <div class="card mb-3">
+                                <img src="{{ product.image_url }}" class="card-img-top" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.title }}</h5>
+                                    <p class="card-text">{{ product.price }}</p>
+                                    <p class="card-text">Seller: {{ product.seller }}</p>
+                                    <a href="{{ product.link }}" class="btn btn-primary" target="_blank">View on eBay</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No results found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

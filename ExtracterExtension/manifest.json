@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Product Compare Extension JS",
+  "version": "1.0",
+  "description": "Search products on Amazon, Flipkart, and eBay directly from your browser.",
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+
+  "host_permissions": [
+    "https://www.amazon.in/",
+    "https://www.flipkart.com/",
+    "https://www.ebay.com/"
+  ],
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+ 
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.in/*", "https://www.flipkart.com/*", "https://www.ebay.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
+

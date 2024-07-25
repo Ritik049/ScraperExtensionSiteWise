@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Search</title>
+  <style>
+    /* Add some basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      width: 600px; /* Adjust width as needed */
+      margin: 0;
+      padding: 10px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    img {
+      max-width: 100px;
+    }
+    .column {
+      display: none; /* Initially hide columns */
+      float: left;
+      width: 32%;
+      margin-right: 1%;
+    }
+    .header {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form id="search-form">
+    <input type="text" id="search-query" placeholder="Enter product name">
+    <button type="submit">Search</button>
+  </form>
+  <div id="results">
+    <div id="amazon" class="column">
+      <div class="header">Amazon</div>
+      <div id="amazon-results"></div>
+    </div>
+    <div id="flipkart" class="column">
+      <div class="header">Flipkart</div>
+      <div id="flipkart-results"></div>
+    </div>
+    <div id="ebay" class="column">
+      <div class="header">eBay</div>
+      <div id="ebay-results"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

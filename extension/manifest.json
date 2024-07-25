@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Product Search Extension SiteWise",
+  "version": "1.0",
+  "description": "Search for products and compare prices.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.amazon.in/*", "*://www.flipkart.com/*", "*://www.ebay.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

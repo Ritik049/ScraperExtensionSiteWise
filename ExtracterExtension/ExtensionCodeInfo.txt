@@ -1,0 +1,30 @@
+
+//manifest.json
+
+-->manifest_version:                 Specifies the version of the manifest file format.
+-->name, version, description:       Basic information about the extension.
+-->permissions:                      Defines permissions required by the extension. Here, activeTab, scripting, and storage are used.
+-->host_permissions:                 Specifies which external sites the extension can interact with.
+-->action:                           Configures the default popup HTML file (popup.html) for the extension.
+-->content_scripts:                  Registers content scripts (content.js) to run on specific URLs (amazon.in, flipkart.com, ebay.com) when the DOM is fully loaded (document_idle).
+
+
+//Content.js (we have incorportated whole code at popup.js)
+
+
+//background.js
+--> chrome.runtime.onMessage.addListener:                        Listens for messages sent from the extension's content scripts or popup.
+--> fetchAmazonData, fetchFlipkartData, fetchEbayData:           Functions to fetch data from Amazon, Flipkart, and eBay using chrome.scripting.executeScript. They execute functions (parseAmazonResults, parseFlipkartResults, parseEbayResults) in the context of the current tab and return the extracted data.
+
+
+
+//popup.js 
+--> fetchResults, fetchAmazon, fetchFlipkart, fetchEbay:         Functions to fetch data from Amazon, Flipkart, and eBay by making HTTP requests to their search pages (/s?k=, /search?q=, /sch/i.html?_nkw=) and parsing the HTML response using DOMParser.
+--> parseAmazon, parseFlipkart, parseEbay:                       Functions to parse the respective HTML documents (doc) and extract relevant product information (title, price, image URL, etc.).
+--> Event listener (submit):                                     Listens for form submission in the popup (popup.html) to initiate a search query.
+-->displayResults:                                               Function to display fetched product results in the popup HTML.
+-->showColumns:                                                  Function to dynamically adjust which columns (Amazon, Flipkart, eBay) to display based on the current URL using Chrome Extension APIs.
+
+
+//popup.html --> (see the html file --> auto explainatory).
+

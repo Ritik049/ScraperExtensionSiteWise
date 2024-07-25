@@ -1,0 +1,12 @@
+/* styles.css */
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  
