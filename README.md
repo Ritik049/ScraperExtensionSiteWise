@@ -1,4 +1,4 @@
-### Product Search Extension Readme
+### Product Search Extension 
 
 This Chrome extension, "Product Search Extension SiteWise," allows users to search for products directly from selected text on web pages and compare prices across Amazon, Flipkart, and eBay using a companion Django web application.
 
